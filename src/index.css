@@ -1,0 +1,22 @@
+@import "tailwindcss";
+ @plugin "daisyui" {
+   themes: dark --default, light --prefersdark;
+ }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+/* The layout container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #2A2A2A;
+  min-height: 100vh; /* Takes at least the full screen height */
+}
+
+/* The content wrapper */
+.main-content {
+  flex: 1; /* ✅ This grows to take up all available space, pushing the footer down */
+}
