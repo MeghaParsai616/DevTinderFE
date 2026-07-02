@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux"
 import { Link, useNavigate } from "react-router-dom";
-import { removeUser, type User } from "./store/slices/userSlice";
+import { removeUser} from "./store/slices/userSlice";
 import { BASE_URL } from "./constants";
 import axios from "axios";
 import { useAppSelector } from "./store/hooks";
@@ -9,7 +9,8 @@ import { useAppSelector } from "./store/hooks";
 
 
 const NavBar = () =>{
-const user  : User | null =  useAppSelector((store) => store?.user?.user);
+const user  :any =  useAppSelector((store) => store?.user);
+console.log("user...........",user )
 const dispatch = useDispatch();
 const navigate = useNavigate();
 
