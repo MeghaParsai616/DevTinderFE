@@ -1,9 +1,13 @@
 @import "tailwindcss";
- @plugin "daisyui" {
-   themes: dark --default, light --prefersdark;
- }
+@plugin "daisyui" {
+  themes:
+    dark --default,
+    light --prefersdark;
+}
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   margin: 0;
 }
@@ -12,15 +16,24 @@ html, body, #root {
 .app-container {
   display: flex;
   flex-direction: column;
-  background-color: #2A2A2A;
+  background-color: #2a2a2a;
   min-height: 100vh; /* Takes at least the full screen height */
 }
 
 /* The content wrapper */
 .main-content {
   flex: 1; /* ✅ This grows to take up all available space, pushing the footer down */
+  overflow-y: auto;
 }
 
 :root {
   --acme-canvas-color: oklch(0.967 0.003 264.542);
+}
+
+.custom-class {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }

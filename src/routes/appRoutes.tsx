@@ -3,6 +3,7 @@ import App from "../App";
 import Login from "../Login";
 import Feed from "../Feed";
 import { useSelector } from "react-redux";
+import Profile from "../components/Profile";
 
 // export const appRoutes = createBrowserRouter([
 // {path:"/", element: <App />, children:[
@@ -17,9 +18,9 @@ const ProtectedRoute = ({ children }) => {
   const user = useSelector((store) => store.user);
 
   // If there is no user logged in, slam the door shut and redirect to login
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
+  // if (!user) {
+  //   return <Navigate to="/login" replace />;
+  // }
 
   return children;
 };
@@ -57,7 +58,7 @@ export const appRoutes = createBrowserRouter([
       },
       {
         path: "profile",
-        element: <div>Profile</div>,
+        element: <Profile/>,
       },
     ],
   },

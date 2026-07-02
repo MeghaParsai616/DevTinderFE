@@ -42,29 +42,6 @@ const user = useSelector(store=> store.user)
     }
   ,[])
 
-  //   useEffect(() => {
-  //   // 1. Component Mounts: Fetch data here if needed
-  //   console.log("Profile view mounted");
-
-  //   // 2. THE CLEANUP FUNCTION: Runs automatically when the user leaves this specific page
-  //   return () => {
-  //     console.log("Profile view unmounted! Erasing sensitive page data...");
-  //     dispatch(removeUser()); // Resets this specific page data to null
-  //   };
-  // }, []);
-
-  //  if (!user) {
-  //   return <Navigate to="/login" replace />;
-  // }
-
-  //  useEffect(() => {
-  //   if (!user) {
-  //     navigate("/login", { replace: true });
-  //     dispatch(removeUser())
-  //   }
-  // }, [user, navigate]);
-
-
   return (
     <div className="app-container">
       <NavBar />

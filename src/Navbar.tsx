@@ -29,7 +29,7 @@ const navigate = useNavigate();
     }
   };
     return(
-   <div className="navbar bg-base-100 shadow-sm">
+   <div className="navbar bg-base-100 shadow-sm custom-class ">
   <div className="flex-1">
     <Link to="/" className="btn btn-ghost text-xl">👩🏻‍💻 Dev Tinder</Link>
   </div>
