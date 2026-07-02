@@ -23,8 +23,11 @@ const user = useSelector(store=> store.user)
      }catch(err){
           console.log("errr: navigated to login", err)
           if(err.status === 401){
-             dispatch(removeUser()); 
-             navigate("/login", {replace: true});
+            if (window.location.pathname !== "/login") {
+              dispatch(removeUser()); 
+          return navigate("/login", { replace: true }); 
+    } 
+           
              
           }
   

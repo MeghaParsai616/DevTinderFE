@@ -8,8 +8,7 @@ const NavBar = () =>{
 const user =  useSelector((store) => store.user);
 const dispatch = useDispatch();
 const navigate = useNavigate();
-console.log("data from navdat")
-console.log(user?.data);
+
 
 
   const handleLogout = async (e) => {
@@ -34,14 +33,15 @@ console.log(user?.data);
   <div className="flex-1">
     <Link to="/" className="btn btn-ghost text-xl">👩🏻‍💻 Dev Tinder</Link>
   </div>
-  {user &&  <div className="flex gap-2">
+  {user &&  <div className="flex gap-2 justify-center">
+       <span className="flex">Welcome {user.firstName}</span>
    
     <div className="dropdown dropdown-end mx-5">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
           <img
             alt="Tailwind CSS Navbar component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            src={user.photoUrl} />
         </div>
       </div>
       <ul
@@ -50,7 +50,11 @@ console.log(user?.data);
         <li>
           <Link to="/profile" className="justify-between">
             Profile
-            <span className="badge">New</span>
+          </Link>
+        </li>
+          <li>
+          <Link to="/profile" className="justify-between">
+            Connections
           </Link>
         </li>
         <li><Link to="">Settings</Link></li>

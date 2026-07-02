@@ -20,3 +20,7 @@ html, body, #root {
 .main-content {
   flex: 1; /* ✅ This grows to take up all available space, pushing the footer down */
 }
+
+:root {
+  --acme-canvas-color: oklch(0.967 0.003 264.542);
+}
