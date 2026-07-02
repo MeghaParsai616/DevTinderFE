@@ -18,17 +18,17 @@ const Login = () => {
   const navigate = useNavigate();
 
   // Clear errors when the user types
-  const handleEmailChange = (e) => {
+  const handleEmailChange = (e :React.ChangeEvent<HTMLInputElement>) => {
     setEmailId(e.target.value);
     setError("");
   };
   
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange = (e :React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
     setError("");
   };
 
-  const handleFormSubmit = async (e) => {
+  const handleFormSubmit = async (e : React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Prevents page reload on form submit
     setError("");
 
@@ -48,13 +48,21 @@ const Login = () => {
       console.log(resp.data);
       dispatch(addUser(resp.data.data));
       navigate("/", { replace: true });
-    } catch (err) {
+    } catch (err ) {
       // Axios error status is inside err.response
-      if (err.response && err.response.status === 400) {
-        setError(hasAccount ? "Entered credentials are not valid" : "SignUp Not Successful");
-      } else {
-        setError("Something went wrong. Please try again later.");
-      }
+    // 1. Check if the caught exception is an actual Axios network error
+  if (axios.isAxiosError(err)) {
+    if (err.response && err.response.status === 400) {
+      setError(hasAccount ? "Entered credentials are not valid" : "SignUp Not Successful");
+    } else {
+      // You can also fall back to checking custom backend message payloads here:
+      // setError(err.response?.data?.message || "Something went wrong.");
+      setError("Something went wrong. Please try again later.");
+    }
+  } else {
+    // 2. Fallback if it's a regular JavaScript engine / syntax error
+    setError("Something went wrong. Please try again later.");
+  }
     }
   };
 

@@ -4,7 +4,7 @@ import axios from "axios";
 import { BASE_URL } from "../constants";
 import ToastMsg from "../ToastMsg";
 
-const EditProfile = ({ user }) => {
+const EditProfile = ({ user } : any) => {
   const [gender, setGender] = useState(user?.gender);
   const [age, setAge] = useState(user?.age); // Removed hardcoded credentials
   const [firstName, setFirstName] = useState(user?.firstName);
@@ -12,7 +12,7 @@ const EditProfile = ({ user }) => {
   const [about, setAbout] = useState(user?.about);
   const [photoUrl, setPhotoUrl] = useState(user?.photoUrl);
   const [response, setResponse] = useState("");
-  const handleFormSubmit = async(e) => {
+  const handleFormSubmit = async(e : any) => {
     e.preventDefault();
 
     try {

@@ -1,19 +1,23 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { Link, useNavigate } from "react-router-dom";
-import { removeUser } from "./store/slices/userSlice";
+import { removeUser, type User } from "./store/slices/userSlice";
 import { BASE_URL } from "./constants";
 import axios from "axios";
+import { useAppSelector } from "./store/hooks";
+
+
+
 
 const NavBar = () =>{
-const user =  useSelector((store) => store.user);
+const user  : User | null =  useAppSelector((store) => store?.user?.user);
 const dispatch = useDispatch();
 const navigate = useNavigate();
 
 
 
-  const handleLogout = async (e) => {
+  const handleLogout = async () => {
     // Prevent the default link redirect so the API can finish first
-    e.preventDefault(); 
+   // e.preventDefault(); 
     
     try {
       // 1. Fire the logout request to clean up server session cookies
@@ -34,7 +38,7 @@ const navigate = useNavigate();
     <Link to="/" className="btn btn-ghost text-xl">👩🏻‍💻 Dev Tinder</Link>
   </div>
   {user &&  <div className="flex gap-2 justify-center">
-       <span className="flex">Welcome {user.firstName}</span>
+       <span className="flex">Welcome {user?.firstName}</span>
    
     <div className="dropdown dropdown-end mx-5">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
@@ -45,7 +49,6 @@ const navigate = useNavigate();
         </div>
       </div>
       <ul
-        tabIndex="-1"
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
         <li>
           <Link to="/profile" className="justify-between">

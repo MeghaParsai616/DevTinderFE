@@ -1,4 +1,4 @@
-const UserCard = ({user}) => {
+const UserCard = ({user} : any) => {
 const {photoUrl,about,  age, gender, firstName, lastName}  = user;
 
     return (      <div className="flex justify-center my-15">

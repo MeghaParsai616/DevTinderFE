@@ -1,9 +1,9 @@
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Login from "../Login";
 import Feed from "../Feed";
-import { useSelector } from "react-redux";
 import Profile from "../components/Profile";
+
 
 // export const appRoutes = createBrowserRouter([
 // {path:"/", element: <App />, children:[
@@ -13,9 +13,9 @@ import Profile from "../components/Profile";
 // ]}
 // ]);
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Grab the user authentication object from your Redux store
-  const user = useSelector((store) => store.user);
+ // const user = useAppSelector((store) => store.user);
 
   // If there is no user logged in, slam the door shut and redirect to login
   // if (!user) {
@@ -25,8 +25,8 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
-const PublicRoute = ({ children }) => {
-  const user = useSelector((store) => store.user);
+const PublicRoute : React.FC<{ children: React.ReactNode }> = ({ children }) => {
+ // const user = useAppSelector((store) => store.user);
 
   // If the user is already logged in, do not let them see the login page; bounce them to home
   // if (user) {

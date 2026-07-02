@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
-
-const ToastMsg = ({message , type}) => {
+interface ToastMsgProps {
+    message : String;
+    type ?: "Error" | "Success"
+}
+const ToastMsg = ({message , type}: ToastMsgProps) => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -16,7 +19,7 @@ const ToastMsg = ({message , type}) => {
   <> {isVisible && <div className="toast toast-start">
  
   <div className="alert alert-success">
-    <span>{message}</span>
+    <span className={type== "Error" ? "bg-amber-700" : ""}>{message}</span>
   </div>
 </div>}</>
   );
